@@ -192,11 +192,23 @@ Sometimes, Git cannot automatically merge changes because the same lines of a fi
     5.  `git add` the resolved file.
     6.  `git commit` to finalize the merge.
 
-### Ignoring Files (`.gitignore`)
+### Ignoring Files (`.gitignore`) 🚯
 
 You often have files or directories that you don't want Git to ever track (e.g., log files, dependency folders like `node_modules`, build outputs).
 
-*   Create a file named `.gitignore` in the root of your repository.
+*   **Create a file named `.gitignore`** in the root of your repository. The command to create a new, empty file differs by operating system:
+    *   **Windows (Command Prompt):**
+        ```bash
+        echo. > .gitignore
+        ```
+    *   **Windows (PowerShell):**
+        ```bash
+        New-Item .gitignore
+        ```
+    *   **Linux / macOS:**
+        ```bash
+        touch .gitignore
+        ```
 *   Add the names of files or folders you want to ignore, one per line.
 *   Example `.gitignore` content:
     ```
