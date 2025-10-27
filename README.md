@@ -2,6 +2,58 @@
 
 This file summarizes the basic Git workflow, from initializing a repository to pushing it to a remote server.
 
+## 0. Initial Setup (One-Time Only) 🛠️
+
+Before you start using Git, there are a few one-time configuration steps you should perform.
+
+**1. Check your Git Version**
+
+This command verifies that Git is installed correctly and shows you the version.
+```bash
+git --version
+```
+
+**2. Configure Your Identity**
+
+This is the most important step. You need to tell Git who you are, so it can label your commits correctly.
+
+*   **Set your name:**
+    ```bash
+    git config --global user.name "Your Name"
+    ```
+*   **Set your email:**
+    ```bash
+    git config --global user.email "youremail@example.com"
+    ```
+*   The `--global` flag means this setting will apply to every Git repository on your computer.
+
+**3. Check Your Configuration**
+
+You can check any configuration setting by running the command without a value.
+```bash
+git config --global user.email
+```
+You can also open the global configuration file in a text editor to see all settings at once.
+```bash
+git config --global --edit
+```
+
+**4. Create Your Project Directory**
+
+These are not Git commands, but regular shell commands to create a folder for your new project and navigate into it.
+
+*   **Create a directory (folder):**
+    ```bash
+    mkdir YourProjectName
+    ```
+*   **Change directory:**
+    ```bash
+    cd YourProjectName
+    ```
+*   After this, you are ready to initialize your repository with `git init`.
+
+---
+
 ## 1. Initialization 🌱
 
 ### `git init`
