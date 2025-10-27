@@ -71,5 +71,62 @@ This file summarizes the basic Git workflow, from initializing a repository to p
     - `<branch>`: The name of the branch you're pushing (e.g., `master`).
 - **Example:** `git push -u origin master`
 
----
-*Note: This change was made on the `new-test-branch`.*
+## 8. Working with Branches
+
+Branches allow you to work on different features or fixes in isolation without affecting the main `master` branch.
+
+### Scenario 1: Creating a New Branch Locally
+
+This is the most common way to start new work.
+
+1.  **Create and switch to a new branch:**
+    ```bash
+    git checkout -b <your-branch-name>
+    ```
+    *   This single command creates a new branch from your current branch and immediately switches to it.
+
+2.  **Make your changes:**
+    *   Modify your code, create new files, etc.
+
+3.  **Add and commit your changes:**
+    ```bash
+    git add .
+    git commit -m "Add new feature"
+    ```
+
+4.  **Push the new branch to the remote:**
+    *   The first time you push a new branch, you need to set the "upstream" link.
+    ```bash
+    git push -u origin <your-branch-name>
+    ```
+    *   After this initial push, you can simply use `git push` for subsequent changes on this branch.
+
+### Scenario 2: Branch Created on GitHub
+
+If a branch is created directly on GitHub, you need to bring it to your local machine.
+
+1.  **Fetch all remote changes:**
+    *   This command downloads information about new branches from the remote repository without changing your local files.
+    ```bash
+    git fetch origin
+    ```
+
+2.  **Switch to the desired branch:**
+    *   Git is smart. If you try to checkout a branch that exists on the remote but not locally, it will create a local copy for you and set it up to track the remote one.
+    *   As an example, we used this to checkout the `new-test-branch` that was created on GitHub:
+    ```bash
+    git checkout new-test-branch
+    ```
+
+3.  **Make, add, and commit changes:**
+    *   This process is the same as always.
+    ```bash
+    git add README.md
+    git commit -m "Update README on new branch"
+    ```
+
+4.  **Push your changes:**
+    *   Because the tracking relationship was already set up in the checkout step, you can just use the simple push command.
+    ```bash
+    git push
+    ```
