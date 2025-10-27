@@ -66,6 +66,22 @@ This file summarizes the basic Git workflow, from initializing a repository to p
     ```
     *   This output shows you have one remote named `origin` that points to the given GitHub URL for both fetching (downloading) and pushing (uploading).
 
+#### What is `origin`? A Quick Analogy
+
+When you see `origin` in Git commands, it's natural to wonder what it is.
+
+> **`origin` is not the URL itself, but rather a *nickname* for the URL.**
+
+Think of it like a contact in your phone. You don't dial your friend's entire phone number every time you want to call them; you save their number under a short name like "John Smith".
+
+In Git, it's the same:
+
+1.  We used the command `git remote add origin https://github.com/RohitBind123/git-test.git` to save that long URL under the short, easy-to-remember nickname `origin`.
+
+2.  Now, instead of telling Git to push to the full URL, we can just say "push to `origin`".
+
+So, in the command `git push -u origin master`, you are telling Git: "Push my `master` branch to the remote repository whose nickname is `origin`."
+
 ## 7. Pushing Changes ⬆️
 
 ### `git push -u <remote> <branch>`
