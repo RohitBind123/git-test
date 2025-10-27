@@ -59,6 +59,12 @@ This file summarizes the basic Git workflow, from initializing a repository to p
 - **Purpose:** To list all the remote repositories you have configured.
 - **Keywords:**
     - `-v`: A flag that stands for "verbose". It shows the URLs for each remote.
+- **Example Output:**
+    ```
+    origin  https://github.com/RohitBind123/git-test.git (fetch)
+    origin  https://github.com/RohitBind123/git-test.git (push)
+    ```
+    *   This output shows you have one remote named `origin` that points to the given GitHub URL for both fetching (downloading) and pushing (uploading).
 
 ## 7. Pushing Changes ⬆️
 
