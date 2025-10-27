@@ -129,7 +129,6 @@ If a branch is created directly on GitHub, you need to bring it to your local ma
     *   Because the tracking relationship was already set up in the checkout step, you can just use the simple push command.
     ```bash
     git push
-<<<<<<< HEAD
     ```
 
 ## 9. Other Important Concepts
@@ -206,6 +205,75 @@ You often have files or directories that you don't want Git to ever track (e.g.,
 *   **Unstage a file (before committing):** To remove a file from the staging area.
     ```bash
     git reset HEAD <file-name>
-=======
->>>>>>> aeafd0dd624c3a4dfeb7d5e0fab7a58c8e848c9f
     ```
+
+## 10. Real-World Scenario: Fixing a 'Rejected' Push
+
+Just now, you encountered a very common error that we can use as a real-world example.
+
+### The Problem: `! [rejected] (non-fast-forward)`
+
+You tried to `git push`, but received an error message like this:
+
+```
+! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/...'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Use 'git pull' before pushing again.
+```
+
+**What it means:** This error happens when there are commits on the remote repository (e.g., on GitHub) that you don't have on your local machine. Git stops you from pushing because your changes would overwrite the history on the remote, potentially losing someone else's work.
+
+### The Solution: Pull, Merge, and Push
+
+Here is the exact step-by-step process we followed to solve it:
+
+**Step 1: Pull the remote changes**
+
+The first step is always to follow the hint Git gives you: `git pull`. This fetches the remote changes and tries to merge them with your local work.
+
+```bash
+git pull origin master
+```
+
+**Step 2: The Merge Conflict**
+
+In our case, the `pull` command resulted in a new problem:
+
+```
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+This happened because both our local machine and the remote repository had changes at the *exact same lines* in the `README.md` file. Git couldn't decide which version to keep, so it asked us to resolve it manually.
+
+**Step 3: Resolve the Conflict Manually**
+
+1.  **We opened the conflicted file (`README.md`).** Inside, we saw the conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`).
+2.  **We analyzed the two versions.** The `HEAD` version (our local one) had all the new documentation sections we wanted. The remote version was missing them.
+3.  **We edited the file to keep the correct version.** We deleted the conflict markers and the incorrect parts, leaving only the complete, correct text.
+4.  **We saved the now-clean file.**
+
+**Step 4: Finalize the Merge**
+
+Once the file was fixed, we had to tell Git that the conflict was resolved.
+
+1.  **Stage the resolved file:** This marks the conflict as resolved.
+    ```bash
+    git add README.md
+    ```
+2.  **Commit the merge:** This creates a new "merge commit" that combines both the local and remote histories.
+    ```bash
+    git commit -m "Merge remote-tracking branch 'origin/master'"
+    ```
+    *(Git often provides a default message for merge commits, which is usually fine to use.)*
+
+**Step 5: Push Your Changes (Finally!)**
+
+After the merge commit, our local `master` branch was finally ahead of the remote `origin/master` and contained all the changes from both sources. We were then able to push successfully.
+
+```bash
+git push origin master
+```
+
+This entire process (pull -> conflict -> resolve -> add -> commit -> push) is a fundamental part of collaborating with Git.
