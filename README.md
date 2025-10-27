@@ -144,7 +144,7 @@ git pull origin master
 ```
 *   This fetches the changes from the `master` branch on the `origin` remote and merges them into your current local branch. It's a combination of `git fetch` and `git merge`.
 
-### Merging Branches (`git merge`)
+### Merging Branches (`git merge`) 🤝
 
 Once you have finished working on a feature in a separate branch, you'll want to merge it back into your main branch (e.g., `master`).
 
@@ -157,6 +157,20 @@ Once you have finished working on a feature in a separate branch, you'll want to
     git merge <your-feature-branch>
     ```
 *   This takes all the commits from `<your-feature-branch>` and integrates them into the `master` branch.
+
+**Example Scenario (Merging `roht/experment`):**
+
+We created the `roht/experment` branch and added a commit to it. Here's how we merged it back into `master`:
+
+1.  First, we ensured we were on the `master` branch:
+    ```bash
+    git checkout master
+    ```
+2.  Then, we ran the merge command:
+    ```bash
+    git merge roht/experment
+    ```
+*   This brought the changes from `roht/experment` into `master`. Now, the local `master` branch is ahead of the remote `origin/master` and contains the new work. The next and final step is to `git push`.
 
 ### Resolving Merge Conflicts 🤯
 
