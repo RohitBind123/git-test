@@ -129,6 +129,7 @@ If a branch is created directly on GitHub, you need to bring it to your local ma
     *   Because the tracking relationship was already set up in the checkout step, you can just use the simple push command.
     ```bash
     git push
+<<<<<<< HEAD
     ```
 
 ## 9. Other Important Concepts
@@ -205,4 +206,6 @@ You often have files or directories that you don't want Git to ever track (e.g.,
 *   **Unstage a file (before committing):** To remove a file from the staging area.
     ```bash
     git reset HEAD <file-name>
+=======
+>>>>>>> aeafd0dd624c3a4dfeb7d5e0fab7a58c8e848c9f
     ```
